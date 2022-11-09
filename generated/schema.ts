@@ -15,14 +15,6 @@ export class NewReportEntity extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
-
-    this.set("_queryId", Value.fromBytes(Bytes.empty()));
-    this.set("_time", Value.fromBigInt(BigInt.zero()));
-    this.set("_value", Value.fromBytes(Bytes.empty()));
-    this.set("_nonce", Value.fromBigInt(BigInt.zero()));
-    this.set("_queryData", Value.fromBytes(Bytes.empty()));
-    this.set("_reporter", Value.fromBytes(Bytes.empty()));
-    this.set("txnHash", Value.fromBytes(Bytes.empty()));
   }
 
   save(): void {
