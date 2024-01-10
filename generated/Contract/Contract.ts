@@ -7,7 +7,7 @@ import {
   Entity,
   Bytes,
   Address,
-  BigInt
+  BigInt,
 } from "@graphprotocol/graph-ts";
 
 export class NewReport extends ethereum.Event {
@@ -278,7 +278,7 @@ export class Contract__getStakerInfoResult {
     value5: BigInt,
     value6: BigInt,
     value7: BigInt,
-    value8: boolean
+    value8: boolean,
   ) {
     this.value0 = value0;
     this.value1 = value1;
@@ -351,7 +351,7 @@ export class Contract extends ethereum.SmartContract {
     let result = super.call(
       "accumulatedRewardPerShare",
       "accumulatedRewardPerShare():(uint256)",
-      []
+      [],
     );
 
     return result[0].toBigInt();
@@ -361,7 +361,7 @@ export class Contract extends ethereum.SmartContract {
     let result = super.tryCall(
       "accumulatedRewardPerShare",
       "accumulatedRewardPerShare():(uint256)",
-      []
+      [],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -376,8 +376,8 @@ export class Contract extends ethereum.SmartContract {
       "getBlockNumberByTimestamp(bytes32,uint256):(uint256)",
       [
         ethereum.Value.fromFixedBytes(_queryId),
-        ethereum.Value.fromUnsignedBigInt(_timestamp)
-      ]
+        ethereum.Value.fromUnsignedBigInt(_timestamp),
+      ],
     );
 
     return result[0].toBigInt();
@@ -385,15 +385,15 @@ export class Contract extends ethereum.SmartContract {
 
   try_getBlockNumberByTimestamp(
     _queryId: Bytes,
-    _timestamp: BigInt
+    _timestamp: BigInt,
   ): ethereum.CallResult<BigInt> {
     let result = super.tryCall(
       "getBlockNumberByTimestamp",
       "getBlockNumberByTimestamp(bytes32,uint256):(uint256)",
       [
         ethereum.Value.fromFixedBytes(_queryId),
-        ethereum.Value.fromUnsignedBigInt(_timestamp)
-      ]
+        ethereum.Value.fromUnsignedBigInt(_timestamp),
+      ],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -406,7 +406,7 @@ export class Contract extends ethereum.SmartContract {
     let result = super.call(
       "getCurrentValue",
       "getCurrentValue(bytes32):(bytes)",
-      [ethereum.Value.fromFixedBytes(_queryId)]
+      [ethereum.Value.fromFixedBytes(_queryId)],
     );
 
     return result[0].toBytes();
@@ -416,7 +416,7 @@ export class Contract extends ethereum.SmartContract {
     let result = super.tryCall(
       "getCurrentValue",
       "getCurrentValue(bytes32):(bytes)",
-      [ethereum.Value.fromFixedBytes(_queryId)]
+      [ethereum.Value.fromFixedBytes(_queryId)],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -427,35 +427,35 @@ export class Contract extends ethereum.SmartContract {
 
   getDataBefore(
     _queryId: Bytes,
-    _timestamp: BigInt
+    _timestamp: BigInt,
   ): Contract__getDataBeforeResult {
     let result = super.call(
       "getDataBefore",
       "getDataBefore(bytes32,uint256):(bool,bytes,uint256)",
       [
         ethereum.Value.fromFixedBytes(_queryId),
-        ethereum.Value.fromUnsignedBigInt(_timestamp)
-      ]
+        ethereum.Value.fromUnsignedBigInt(_timestamp),
+      ],
     );
 
     return new Contract__getDataBeforeResult(
       result[0].toBoolean(),
       result[1].toBytes(),
-      result[2].toBigInt()
+      result[2].toBigInt(),
     );
   }
 
   try_getDataBefore(
     _queryId: Bytes,
-    _timestamp: BigInt
+    _timestamp: BigInt,
   ): ethereum.CallResult<Contract__getDataBeforeResult> {
     let result = super.tryCall(
       "getDataBefore",
       "getDataBefore(bytes32,uint256):(bool,bytes,uint256)",
       [
         ethereum.Value.fromFixedBytes(_queryId),
-        ethereum.Value.fromUnsignedBigInt(_timestamp)
-      ]
+        ethereum.Value.fromUnsignedBigInt(_timestamp),
+      ],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -465,8 +465,8 @@ export class Contract extends ethereum.SmartContract {
       new Contract__getDataBeforeResult(
         value[0].toBoolean(),
         value[1].toBytes(),
-        value[2].toBigInt()
-      )
+        value[2].toBigInt(),
+      ),
     );
   }
 
@@ -474,7 +474,7 @@ export class Contract extends ethereum.SmartContract {
     let result = super.call(
       "getGovernanceAddress",
       "getGovernanceAddress():(address)",
-      []
+      [],
     );
 
     return result[0].toAddress();
@@ -484,7 +484,7 @@ export class Contract extends ethereum.SmartContract {
     let result = super.tryCall(
       "getGovernanceAddress",
       "getGovernanceAddress():(address)",
-      []
+      [],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -495,34 +495,34 @@ export class Contract extends ethereum.SmartContract {
 
   getIndexForDataBefore(
     _queryId: Bytes,
-    _timestamp: BigInt
+    _timestamp: BigInt,
   ): Contract__getIndexForDataBeforeResult {
     let result = super.call(
       "getIndexForDataBefore",
       "getIndexForDataBefore(bytes32,uint256):(bool,uint256)",
       [
         ethereum.Value.fromFixedBytes(_queryId),
-        ethereum.Value.fromUnsignedBigInt(_timestamp)
-      ]
+        ethereum.Value.fromUnsignedBigInt(_timestamp),
+      ],
     );
 
     return new Contract__getIndexForDataBeforeResult(
       result[0].toBoolean(),
-      result[1].toBigInt()
+      result[1].toBigInt(),
     );
   }
 
   try_getIndexForDataBefore(
     _queryId: Bytes,
-    _timestamp: BigInt
+    _timestamp: BigInt,
   ): ethereum.CallResult<Contract__getIndexForDataBeforeResult> {
     let result = super.tryCall(
       "getIndexForDataBefore",
       "getIndexForDataBefore(bytes32,uint256):(bool,uint256)",
       [
         ethereum.Value.fromFixedBytes(_queryId),
-        ethereum.Value.fromUnsignedBigInt(_timestamp)
-      ]
+        ethereum.Value.fromUnsignedBigInt(_timestamp),
+      ],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -531,8 +531,8 @@ export class Contract extends ethereum.SmartContract {
     return ethereum.CallResult.fromValue(
       new Contract__getIndexForDataBeforeResult(
         value[0].toBoolean(),
-        value[1].toBigInt()
-      )
+        value[1].toBigInt(),
+      ),
     );
   }
 
@@ -540,7 +540,7 @@ export class Contract extends ethereum.SmartContract {
     let result = super.call(
       "getNewValueCountbyQueryId",
       "getNewValueCountbyQueryId(bytes32):(uint256)",
-      [ethereum.Value.fromFixedBytes(_queryId)]
+      [ethereum.Value.fromFixedBytes(_queryId)],
     );
 
     return result[0].toBigInt();
@@ -550,7 +550,7 @@ export class Contract extends ethereum.SmartContract {
     let result = super.tryCall(
       "getNewValueCountbyQueryId",
       "getNewValueCountbyQueryId(bytes32):(uint256)",
-      [ethereum.Value.fromFixedBytes(_queryId)]
+      [ethereum.Value.fromFixedBytes(_queryId)],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -563,19 +563,19 @@ export class Contract extends ethereum.SmartContract {
     let result = super.call(
       "getPendingRewardByStaker",
       "getPendingRewardByStaker(address):(uint256)",
-      [ethereum.Value.fromAddress(_stakerAddress)]
+      [ethereum.Value.fromAddress(_stakerAddress)],
     );
 
     return result[0].toBigInt();
   }
 
   try_getPendingRewardByStaker(
-    _stakerAddress: Address
+    _stakerAddress: Address,
   ): ethereum.CallResult<BigInt> {
     let result = super.tryCall(
       "getPendingRewardByStaker",
       "getPendingRewardByStaker(address):(uint256)",
-      [ethereum.Value.fromAddress(_stakerAddress)]
+      [ethereum.Value.fromAddress(_stakerAddress)],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -588,7 +588,7 @@ export class Contract extends ethereum.SmartContract {
     let result = super.call(
       "getRealStakingRewardsBalance",
       "getRealStakingRewardsBalance():(uint256)",
-      []
+      [],
     );
 
     return result[0].toBigInt();
@@ -598,7 +598,7 @@ export class Contract extends ethereum.SmartContract {
     let result = super.tryCall(
       "getRealStakingRewardsBalance",
       "getRealStakingRewardsBalance():(uint256)",
-      []
+      [],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -609,34 +609,34 @@ export class Contract extends ethereum.SmartContract {
 
   getReportDetails(
     _queryId: Bytes,
-    _timestamp: BigInt
+    _timestamp: BigInt,
   ): Contract__getReportDetailsResult {
     let result = super.call(
       "getReportDetails",
       "getReportDetails(bytes32,uint256):(address,bool)",
       [
         ethereum.Value.fromFixedBytes(_queryId),
-        ethereum.Value.fromUnsignedBigInt(_timestamp)
-      ]
+        ethereum.Value.fromUnsignedBigInt(_timestamp),
+      ],
     );
 
     return new Contract__getReportDetailsResult(
       result[0].toAddress(),
-      result[1].toBoolean()
+      result[1].toBoolean(),
     );
   }
 
   try_getReportDetails(
     _queryId: Bytes,
-    _timestamp: BigInt
+    _timestamp: BigInt,
   ): ethereum.CallResult<Contract__getReportDetailsResult> {
     let result = super.tryCall(
       "getReportDetails",
       "getReportDetails(bytes32,uint256):(address,bool)",
       [
         ethereum.Value.fromFixedBytes(_queryId),
-        ethereum.Value.fromUnsignedBigInt(_timestamp)
-      ]
+        ethereum.Value.fromUnsignedBigInt(_timestamp),
+      ],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -645,8 +645,8 @@ export class Contract extends ethereum.SmartContract {
     return ethereum.CallResult.fromValue(
       new Contract__getReportDetailsResult(
         value[0].toAddress(),
-        value[1].toBoolean()
-      )
+        value[1].toBoolean(),
+      ),
     );
   }
 
@@ -656,8 +656,8 @@ export class Contract extends ethereum.SmartContract {
       "getReporterByTimestamp(bytes32,uint256):(address)",
       [
         ethereum.Value.fromFixedBytes(_queryId),
-        ethereum.Value.fromUnsignedBigInt(_timestamp)
-      ]
+        ethereum.Value.fromUnsignedBigInt(_timestamp),
+      ],
     );
 
     return result[0].toAddress();
@@ -665,15 +665,15 @@ export class Contract extends ethereum.SmartContract {
 
   try_getReporterByTimestamp(
     _queryId: Bytes,
-    _timestamp: BigInt
+    _timestamp: BigInt,
   ): ethereum.CallResult<Address> {
     let result = super.tryCall(
       "getReporterByTimestamp",
       "getReporterByTimestamp(bytes32,uint256):(address)",
       [
         ethereum.Value.fromFixedBytes(_queryId),
-        ethereum.Value.fromUnsignedBigInt(_timestamp)
-      ]
+        ethereum.Value.fromUnsignedBigInt(_timestamp),
+      ],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -686,19 +686,19 @@ export class Contract extends ethereum.SmartContract {
     let result = super.call(
       "getReporterLastTimestamp",
       "getReporterLastTimestamp(address):(uint256)",
-      [ethereum.Value.fromAddress(_reporter)]
+      [ethereum.Value.fromAddress(_reporter)],
     );
 
     return result[0].toBigInt();
   }
 
   try_getReporterLastTimestamp(
-    _reporter: Address
+    _reporter: Address,
   ): ethereum.CallResult<BigInt> {
     let result = super.tryCall(
       "getReporterLastTimestamp",
       "getReporterLastTimestamp(address):(uint256)",
-      [ethereum.Value.fromAddress(_reporter)]
+      [ethereum.Value.fromAddress(_reporter)],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -711,7 +711,7 @@ export class Contract extends ethereum.SmartContract {
     let result = super.call(
       "getReportingLock",
       "getReportingLock():(uint256)",
-      []
+      [],
     );
 
     return result[0].toBigInt();
@@ -721,7 +721,7 @@ export class Contract extends ethereum.SmartContract {
     let result = super.tryCall(
       "getReportingLock",
       "getReportingLock():(uint256)",
-      []
+      [],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -734,19 +734,19 @@ export class Contract extends ethereum.SmartContract {
     let result = super.call(
       "getReportsSubmittedByAddress",
       "getReportsSubmittedByAddress(address):(uint256)",
-      [ethereum.Value.fromAddress(_reporter)]
+      [ethereum.Value.fromAddress(_reporter)],
     );
 
     return result[0].toBigInt();
   }
 
   try_getReportsSubmittedByAddress(
-    _reporter: Address
+    _reporter: Address,
   ): ethereum.CallResult<BigInt> {
     let result = super.tryCall(
       "getReportsSubmittedByAddress",
       "getReportsSubmittedByAddress(address):(uint256)",
-      [ethereum.Value.fromAddress(_reporter)]
+      [ethereum.Value.fromAddress(_reporter)],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -757,15 +757,15 @@ export class Contract extends ethereum.SmartContract {
 
   getReportsSubmittedByAddressAndQueryId(
     _reporter: Address,
-    _queryId: Bytes
+    _queryId: Bytes,
   ): BigInt {
     let result = super.call(
       "getReportsSubmittedByAddressAndQueryId",
       "getReportsSubmittedByAddressAndQueryId(address,bytes32):(uint256)",
       [
         ethereum.Value.fromAddress(_reporter),
-        ethereum.Value.fromFixedBytes(_queryId)
-      ]
+        ethereum.Value.fromFixedBytes(_queryId),
+      ],
     );
 
     return result[0].toBigInt();
@@ -773,15 +773,15 @@ export class Contract extends ethereum.SmartContract {
 
   try_getReportsSubmittedByAddressAndQueryId(
     _reporter: Address,
-    _queryId: Bytes
+    _queryId: Bytes,
   ): ethereum.CallResult<BigInt> {
     let result = super.tryCall(
       "getReportsSubmittedByAddressAndQueryId",
       "getReportsSubmittedByAddressAndQueryId(address,bytes32):(uint256)",
       [
         ethereum.Value.fromAddress(_reporter),
-        ethereum.Value.fromFixedBytes(_queryId)
-      ]
+        ethereum.Value.fromFixedBytes(_queryId),
+      ],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -800,7 +800,7 @@ export class Contract extends ethereum.SmartContract {
     let result = super.tryCall(
       "getStakeAmount",
       "getStakeAmount():(uint256)",
-      []
+      [],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -813,7 +813,7 @@ export class Contract extends ethereum.SmartContract {
     let result = super.call(
       "getStakerInfo",
       "getStakerInfo(address):(uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,bool)",
-      [ethereum.Value.fromAddress(_stakerAddress)]
+      [ethereum.Value.fromAddress(_stakerAddress)],
     );
 
     return new Contract__getStakerInfoResult(
@@ -825,17 +825,17 @@ export class Contract extends ethereum.SmartContract {
       result[5].toBigInt(),
       result[6].toBigInt(),
       result[7].toBigInt(),
-      result[8].toBoolean()
+      result[8].toBoolean(),
     );
   }
 
   try_getStakerInfo(
-    _stakerAddress: Address
+    _stakerAddress: Address,
   ): ethereum.CallResult<Contract__getStakerInfoResult> {
     let result = super.tryCall(
       "getStakerInfo",
       "getStakerInfo(address):(uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,bool)",
-      [ethereum.Value.fromAddress(_stakerAddress)]
+      [ethereum.Value.fromAddress(_stakerAddress)],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -851,8 +851,8 @@ export class Contract extends ethereum.SmartContract {
         value[5].toBigInt(),
         value[6].toBigInt(),
         value[7].toBigInt(),
-        value[8].toBoolean()
-      )
+        value[8].toBoolean(),
+      ),
     );
   }
 
@@ -860,7 +860,7 @@ export class Contract extends ethereum.SmartContract {
     let result = super.call(
       "getTimeOfLastNewValue",
       "getTimeOfLastNewValue():(uint256)",
-      []
+      [],
     );
 
     return result[0].toBigInt();
@@ -870,7 +870,7 @@ export class Contract extends ethereum.SmartContract {
     let result = super.tryCall(
       "getTimeOfLastNewValue",
       "getTimeOfLastNewValue():(uint256)",
-      []
+      [],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -885,8 +885,8 @@ export class Contract extends ethereum.SmartContract {
       "getTimestampIndexByTimestamp(bytes32,uint256):(uint256)",
       [
         ethereum.Value.fromFixedBytes(_queryId),
-        ethereum.Value.fromUnsignedBigInt(_timestamp)
-      ]
+        ethereum.Value.fromUnsignedBigInt(_timestamp),
+      ],
     );
 
     return result[0].toBigInt();
@@ -894,15 +894,15 @@ export class Contract extends ethereum.SmartContract {
 
   try_getTimestampIndexByTimestamp(
     _queryId: Bytes,
-    _timestamp: BigInt
+    _timestamp: BigInt,
   ): ethereum.CallResult<BigInt> {
     let result = super.tryCall(
       "getTimestampIndexByTimestamp",
       "getTimestampIndexByTimestamp(bytes32,uint256):(uint256)",
       [
         ethereum.Value.fromFixedBytes(_queryId),
-        ethereum.Value.fromUnsignedBigInt(_timestamp)
-      ]
+        ethereum.Value.fromUnsignedBigInt(_timestamp),
+      ],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -917,8 +917,8 @@ export class Contract extends ethereum.SmartContract {
       "getTimestampbyQueryIdandIndex(bytes32,uint256):(uint256)",
       [
         ethereum.Value.fromFixedBytes(_queryId),
-        ethereum.Value.fromUnsignedBigInt(_index)
-      ]
+        ethereum.Value.fromUnsignedBigInt(_index),
+      ],
     );
 
     return result[0].toBigInt();
@@ -926,15 +926,15 @@ export class Contract extends ethereum.SmartContract {
 
   try_getTimestampbyQueryIdandIndex(
     _queryId: Bytes,
-    _index: BigInt
+    _index: BigInt,
   ): ethereum.CallResult<BigInt> {
     let result = super.tryCall(
       "getTimestampbyQueryIdandIndex",
       "getTimestampbyQueryIdandIndex(bytes32,uint256):(uint256)",
       [
         ethereum.Value.fromFixedBytes(_queryId),
-        ethereum.Value.fromUnsignedBigInt(_index)
-      ]
+        ethereum.Value.fromUnsignedBigInt(_index),
+      ],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -947,7 +947,7 @@ export class Contract extends ethereum.SmartContract {
     let result = super.call(
       "getTokenAddress",
       "getTokenAddress():(address)",
-      []
+      [],
     );
 
     return result[0].toAddress();
@@ -957,7 +957,7 @@ export class Contract extends ethereum.SmartContract {
     let result = super.tryCall(
       "getTokenAddress",
       "getTokenAddress():(address)",
-      []
+      [],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -970,7 +970,7 @@ export class Contract extends ethereum.SmartContract {
     let result = super.call(
       "getTotalStakeAmount",
       "getTotalStakeAmount():(uint256)",
-      []
+      [],
     );
 
     return result[0].toBigInt();
@@ -980,7 +980,7 @@ export class Contract extends ethereum.SmartContract {
     let result = super.tryCall(
       "getTotalStakeAmount",
       "getTotalStakeAmount():(uint256)",
-      []
+      [],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -993,7 +993,7 @@ export class Contract extends ethereum.SmartContract {
     let result = super.call(
       "getTotalStakers",
       "getTotalStakers():(uint256)",
-      []
+      [],
     );
 
     return result[0].toBigInt();
@@ -1003,7 +1003,7 @@ export class Contract extends ethereum.SmartContract {
     let result = super.tryCall(
       "getTotalStakers",
       "getTotalStakers():(uint256)",
-      []
+      [],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -1016,7 +1016,7 @@ export class Contract extends ethereum.SmartContract {
     let result = super.call(
       "getTotalTimeBasedRewardsBalance",
       "getTotalTimeBasedRewardsBalance():(uint256)",
-      []
+      [],
     );
 
     return result[0].toBigInt();
@@ -1026,7 +1026,7 @@ export class Contract extends ethereum.SmartContract {
     let result = super.tryCall(
       "getTotalTimeBasedRewardsBalance",
       "getTotalTimeBasedRewardsBalance():(uint256)",
-      []
+      [],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -1056,8 +1056,8 @@ export class Contract extends ethereum.SmartContract {
       "isInDispute(bytes32,uint256):(bool)",
       [
         ethereum.Value.fromFixedBytes(_queryId),
-        ethereum.Value.fromUnsignedBigInt(_timestamp)
-      ]
+        ethereum.Value.fromUnsignedBigInt(_timestamp),
+      ],
     );
 
     return result[0].toBoolean();
@@ -1065,15 +1065,15 @@ export class Contract extends ethereum.SmartContract {
 
   try_isInDispute(
     _queryId: Bytes,
-    _timestamp: BigInt
+    _timestamp: BigInt,
   ): ethereum.CallResult<boolean> {
     let result = super.tryCall(
       "isInDispute",
       "isInDispute(bytes32,uint256):(bool)",
       [
         ethereum.Value.fromFixedBytes(_queryId),
-        ethereum.Value.fromUnsignedBigInt(_timestamp)
-      ]
+        ethereum.Value.fromUnsignedBigInt(_timestamp),
+      ],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -1086,7 +1086,7 @@ export class Contract extends ethereum.SmartContract {
     let result = super.call(
       "minimumStakeAmount",
       "minimumStakeAmount():(uint256)",
-      []
+      [],
     );
 
     return result[0].toBigInt();
@@ -1096,7 +1096,7 @@ export class Contract extends ethereum.SmartContract {
     let result = super.tryCall(
       "minimumStakeAmount",
       "minimumStakeAmount():(uint256)",
-      []
+      [],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -1130,7 +1130,7 @@ export class Contract extends ethereum.SmartContract {
     let result = super.tryCall(
       "reportingLock",
       "reportingLock():(uint256)",
-      []
+      [],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -1145,8 +1145,8 @@ export class Contract extends ethereum.SmartContract {
       "retrieveData(bytes32,uint256):(bytes)",
       [
         ethereum.Value.fromFixedBytes(_queryId),
-        ethereum.Value.fromUnsignedBigInt(_timestamp)
-      ]
+        ethereum.Value.fromUnsignedBigInt(_timestamp),
+      ],
     );
 
     return result[0].toBytes();
@@ -1154,15 +1154,15 @@ export class Contract extends ethereum.SmartContract {
 
   try_retrieveData(
     _queryId: Bytes,
-    _timestamp: BigInt
+    _timestamp: BigInt,
   ): ethereum.CallResult<Bytes> {
     let result = super.tryCall(
       "retrieveData",
       "retrieveData(bytes32,uint256):(bytes)",
       [
         ethereum.Value.fromFixedBytes(_queryId),
-        ethereum.Value.fromUnsignedBigInt(_timestamp)
-      ]
+        ethereum.Value.fromUnsignedBigInt(_timestamp),
+      ],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -1192,8 +1192,8 @@ export class Contract extends ethereum.SmartContract {
       "slashReporter(address,address):(uint256)",
       [
         ethereum.Value.fromAddress(_reporter),
-        ethereum.Value.fromAddress(_recipient)
-      ]
+        ethereum.Value.fromAddress(_recipient),
+      ],
     );
 
     return result[0].toBigInt();
@@ -1201,15 +1201,15 @@ export class Contract extends ethereum.SmartContract {
 
   try_slashReporter(
     _reporter: Address,
-    _recipient: Address
+    _recipient: Address,
   ): ethereum.CallResult<BigInt> {
     let result = super.tryCall(
       "slashReporter",
       "slashReporter(address,address):(uint256)",
       [
         ethereum.Value.fromAddress(_reporter),
-        ethereum.Value.fromAddress(_recipient)
-      ]
+        ethereum.Value.fromAddress(_recipient),
+      ],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -1237,7 +1237,7 @@ export class Contract extends ethereum.SmartContract {
     let result = super.call(
       "stakeAmountDollarTarget",
       "stakeAmountDollarTarget():(uint256)",
-      []
+      [],
     );
 
     return result[0].toBigInt();
@@ -1247,7 +1247,7 @@ export class Contract extends ethereum.SmartContract {
     let result = super.tryCall(
       "stakeAmountDollarTarget",
       "stakeAmountDollarTarget():(uint256)",
-      []
+      [],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -1260,7 +1260,7 @@ export class Contract extends ethereum.SmartContract {
     let result = super.call(
       "stakingRewardsBalance",
       "stakingRewardsBalance():(uint256)",
-      []
+      [],
     );
 
     return result[0].toBigInt();
@@ -1270,7 +1270,7 @@ export class Contract extends ethereum.SmartContract {
     let result = super.tryCall(
       "stakingRewardsBalance",
       "stakingRewardsBalance():(uint256)",
-      []
+      [],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -1283,7 +1283,7 @@ export class Contract extends ethereum.SmartContract {
     let result = super.call(
       "stakingTokenPriceQueryId",
       "stakingTokenPriceQueryId():(bytes32)",
-      []
+      [],
     );
 
     return result[0].toBytes();
@@ -1293,7 +1293,7 @@ export class Contract extends ethereum.SmartContract {
     let result = super.tryCall(
       "stakingTokenPriceQueryId",
       "stakingTokenPriceQueryId():(bytes32)",
-      []
+      [],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -1306,7 +1306,7 @@ export class Contract extends ethereum.SmartContract {
     let result = super.call(
       "timeBasedReward",
       "timeBasedReward():(uint256)",
-      []
+      [],
     );
 
     return result[0].toBigInt();
@@ -1316,7 +1316,7 @@ export class Contract extends ethereum.SmartContract {
     let result = super.tryCall(
       "timeBasedReward",
       "timeBasedReward():(uint256)",
-      []
+      [],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -1329,7 +1329,7 @@ export class Contract extends ethereum.SmartContract {
     let result = super.call(
       "timeOfLastAllocation",
       "timeOfLastAllocation():(uint256)",
-      []
+      [],
     );
 
     return result[0].toBigInt();
@@ -1339,7 +1339,7 @@ export class Contract extends ethereum.SmartContract {
     let result = super.tryCall(
       "timeOfLastAllocation",
       "timeOfLastAllocation():(uint256)",
-      []
+      [],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -1352,7 +1352,7 @@ export class Contract extends ethereum.SmartContract {
     let result = super.call(
       "timeOfLastNewValue",
       "timeOfLastNewValue():(uint256)",
-      []
+      [],
     );
 
     return result[0].toBigInt();
@@ -1362,7 +1362,7 @@ export class Contract extends ethereum.SmartContract {
     let result = super.tryCall(
       "timeOfLastNewValue",
       "timeOfLastNewValue():(uint256)",
-      []
+      [],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -1390,7 +1390,7 @@ export class Contract extends ethereum.SmartContract {
     let result = super.call(
       "totalRewardDebt",
       "totalRewardDebt():(uint256)",
-      []
+      [],
     );
 
     return result[0].toBigInt();
@@ -1400,7 +1400,7 @@ export class Contract extends ethereum.SmartContract {
     let result = super.tryCall(
       "totalRewardDebt",
       "totalRewardDebt():(uint256)",
-      []
+      [],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -1413,7 +1413,7 @@ export class Contract extends ethereum.SmartContract {
     let result = super.call(
       "totalStakeAmount",
       "totalStakeAmount():(uint256)",
-      []
+      [],
     );
 
     return result[0].toBigInt();
@@ -1423,7 +1423,7 @@ export class Contract extends ethereum.SmartContract {
     let result = super.tryCall(
       "totalStakeAmount",
       "totalStakeAmount():(uint256)",
-      []
+      [],
     );
     if (result.reverted) {
       return new ethereum.CallResult();

@@ -8,7 +8,7 @@ import {
   store,
   Bytes,
   BigInt,
-  BigDecimal
+  BigDecimal,
 } from "@graphprotocol/graph-ts";
 
 export class NewReportEntity extends Entity {
@@ -23,10 +23,16 @@ export class NewReportEntity extends Entity {
     if (id) {
       assert(
         id.kind == ValueKind.STRING,
-        `Entities of type NewReportEntity must have an ID of type String but the id '${id.displayData()}' is of type ${id.displayKind()}`
+        `Entities of type NewReportEntity must have an ID of type String but the id '${id.displayData()}' is of type ${id.displayKind()}`,
       );
       store.set("NewReportEntity", id.toString(), this);
     }
+  }
+
+  static loadInBlock(id: string): NewReportEntity | null {
+    return changetype<NewReportEntity | null>(
+      store.get_in_block("NewReportEntity", id),
+    );
   }
 
   static load(id: string): NewReportEntity | null {
@@ -35,7 +41,11 @@ export class NewReportEntity extends Entity {
 
   get id(): string {
     let value = this.get("id");
-    return value!.toString();
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toString();
+    }
   }
 
   set id(value: string) {
@@ -44,7 +54,11 @@ export class NewReportEntity extends Entity {
 
   get _queryId(): Bytes {
     let value = this.get("_queryId");
-    return value!.toBytes();
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
   }
 
   set _queryId(value: Bytes) {
@@ -53,7 +67,11 @@ export class NewReportEntity extends Entity {
 
   get _time(): BigInt {
     let value = this.get("_time");
-    return value!.toBigInt();
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigInt();
+    }
   }
 
   set _time(value: BigInt) {
@@ -62,7 +80,11 @@ export class NewReportEntity extends Entity {
 
   get _value(): Bytes {
     let value = this.get("_value");
-    return value!.toBytes();
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
   }
 
   set _value(value: Bytes) {
@@ -71,7 +93,11 @@ export class NewReportEntity extends Entity {
 
   get _nonce(): BigInt {
     let value = this.get("_nonce");
-    return value!.toBigInt();
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigInt();
+    }
   }
 
   set _nonce(value: BigInt) {
@@ -80,7 +106,11 @@ export class NewReportEntity extends Entity {
 
   get _queryData(): Bytes {
     let value = this.get("_queryData");
-    return value!.toBytes();
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
   }
 
   set _queryData(value: Bytes) {
@@ -89,7 +119,11 @@ export class NewReportEntity extends Entity {
 
   get _reporter(): Bytes {
     let value = this.get("_reporter");
-    return value!.toBytes();
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
   }
 
   set _reporter(value: Bytes) {
@@ -98,7 +132,11 @@ export class NewReportEntity extends Entity {
 
   get txnHash(): Bytes {
     let value = this.get("txnHash");
-    return value!.toBytes();
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
   }
 
   set txnHash(value: Bytes) {
